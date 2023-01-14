@@ -7,7 +7,7 @@ fn convert(file_src_old []string, file_name string) {
 	if file_src_old.len < 1 {
 		return
 	}
-	mut file_new := os.open_append(file_name) or {
+	mut file_new := os.create('new_${file_name}') or {
 		eprintln('${err}')
 		return
 	}

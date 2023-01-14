@@ -7,7 +7,7 @@ fn main() {
 		panic('Please provide file, dictionary or multiple files ')
 	}
 	mut paths := os.args[1..].clone()
-	for paths.len > 0 {
+	for paths.len > 0 { // walk args
 		path := paths.pop()
 		// println('path: ' + path)
 		if os.is_dir(path) {
