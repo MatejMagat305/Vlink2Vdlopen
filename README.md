@@ -1,13 +1,18 @@
 # Vlink2Vdlopen
-this is small prototype of tool, which is trying transform V code with link (static or dynamic) to V code with dl open. <br>
+this is small prototype of tool, which is trying transform V code with link (static or dynamic) to V code with dl open.
 # the main idea:
-'''
+
+```
 ...
 fn C.some_fn1(params1) ret1
 ...
-->
+
+```
+## ->
+
+```
 ...
-fn dl_get_opened() !voidptr{
+fn dl_get_opened() !voidptr{<br>
 	parts := $if linux||gnu{[]}$else $if windows{[]}$else $if mac||macos{[]}$else $if android{[]}$else{[]}//fix me give locations
 	for i := 0; i < paths.len; i++ {
 		handle := dl.open_opt(paths[i]) or {continue}
@@ -34,5 +39,6 @@ fn C.some_fn1(params1) ret1
 type some_fn1 = C.some_fn1
 ...
 }
-'''
+
+```
 paths of dlopen you have to put manualy because tool can not know it ..., and bugs you have to solve ... for concrete library ... 
